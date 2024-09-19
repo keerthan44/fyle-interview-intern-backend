@@ -94,7 +94,7 @@ def test_grade_assignment_draft_assignment(client, h_teacher_1):
             "grade": "A"
         }
     )
-
+    print(response)
     assert response.status_code == 400
     data = response.json
 
