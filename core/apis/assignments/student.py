@@ -24,7 +24,6 @@ def upsert_assignment(p, incoming_payload):
     """Create or Edit an assignment"""
     assignment = AssignmentSchema().load(incoming_payload)
     assignment.student_id = p.student_id
-
     upserted_assignment = Assignment.upsert(assignment)
     db.session.commit()
     upserted_assignment_dump = AssignmentSchema().dump(upserted_assignment)
@@ -41,7 +40,7 @@ def submit_assignment(p, incoming_payload):
     submitted_assignment = Assignment.submit(
         _id=submit_assignment_payload.id,
         teacher_id=submit_assignment_payload.teacher_id,
-        auth_principal=p
+        auth_principal=p,
     )
     db.session.commit()
     submitted_assignment_dump = AssignmentSchema().dump(submitted_assignment)
