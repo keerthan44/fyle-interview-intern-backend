@@ -52,7 +52,6 @@ def test_post_assignment_student_1(client, h_student_1):
     assert response.status_code == 200
 
     data = response.json['data']
-    print(data)
     assert data['content'] == content
     assert data['state'] == 'DRAFT'
     assert data['teacher_id'] is None
