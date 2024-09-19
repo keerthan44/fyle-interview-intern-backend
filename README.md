@@ -56,3 +56,30 @@ pytest -vvv -s tests/
 # pytest --cov
 # open htmlcov/index.html
 ```
+
+## Docker
+
+To build the Docker image:
+```
+docker build -t fyle .
+```
+
+To run the Docker container with port forwarding:
+```
+docker run -p 7755:7755 -it fyle
+```
+Or, if you don't need port forwarding:
+```
+docker run -it fyle
+```
+## Docker Compose
+
+To build the Docker image with Docker Compose:
+```
+docker compose build --build-arg BUILD_STAGE=builder
+```
+To start the Docker container:
+```
+docker compose up
+```
+*Port forwarding is enabled by default. You can modify this in the `docker-compose.yaml` if needed.*
